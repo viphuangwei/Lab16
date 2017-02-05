@@ -1,0 +1,30 @@
+<div class="mdl-grid">
+	<form [formGroup]="userpost" (ngSubmit)="submit()" class="mdl-cell mdl-cell--6-col mdl-cell--4-offset">
+		<div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" id="userpostName" type="text" name="name" [formControl]="userpost.controls['name']">
+			    <label class="mdl-textfield__label" for="userpostName">Name</label>
+			    <span class="error_happens" *ngIf="!userpost.controls['name'].valid && userpost.controls['name'].touched" >Required</span>
+			</div>
+		</div>
+		<div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" id="userpostEmail" type="text" name="email" [formControl]="userpost.controls['email']">	
+			    <label class="mdl-textfield__label" for="userpostEmail">Email</label>
+			    <span class="error_happens" *ngIf="!userpost.controls['email'].valid && userpost.controls['email'].touched" >Required</span>
+			</div>
+		</div>
+		<div>
+			<div class="mdl-textfield mdl-js-textfield">
+				<textarea class="mdl-textfield__input" name="post" [formControl]="userpost.controls['post']" id="" cols="30" rows="10"></textarea>
+			    <label class="mdl-textfield__label" for="sample5">Text lines...</label>
+			</div>
+		    <span class="error_happens" *ngIf="!userpost.controls['post'].valid && userpost.controls['post'].touched" >Minimum Character: 10</span>
+
+		</div>
+		<br>
+		<br>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" [disabled]="!userpost.valid">Submit</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="button" [disabled]="false" (click)="getData()">Get Data</button>
+	</form>
+</div>
